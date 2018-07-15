@@ -23,7 +23,7 @@ public class MatrixHelper {
     }
 
     public boolean checkWinner(String[][] matrix) {
-        return checkSameRows(matrix) || checkSameCols(matrix); || checkDiagonalA(matrix) || checkDiagonalB(matrix);
+        return checkSameRows(matrix) || checkSameCols(matrix) || checkDiagonalA(matrix) || checkDiagonalB(matrix);
     }
 
     private boolean checkSameRows(String[][] matrix) {
@@ -59,45 +59,19 @@ public class MatrixHelper {
     }
 
     private boolean checkDiagonalA(String[][] matrix) {
-        String nDiagonal = 0;
-        boolean hasAssignedNDiagonal = false;
-        boolean diagonalOk = true;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (i == j) {
-                    if (!hasAssignedNDiagonal) {
-                        hasAssignedNDiagonal = true;
-                        nDiagonal = matrix[i][j];
-                    }
-                } else if (nDiagonal != matrix[i][j]) {
-                    diagonalOk = false;
-                }
-                if (nDiagonal) {
-                    return nDiagonal;
-                }
-            }
+        boolean same = false;
+        String item = matrix[0][0];
+        if (item.equals(matrix[1][1]) && item.equals(matrix[2][2])) {
+            same = true;
         }
+        return same;
     }
-
-    private boolean checkDiagonalB(String[][] matrix) {
-        String nDiagonal = 0;
-        boolean hasAssignedNDiagonal = false;
-        boolean diagonalOk = true;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (i == j) {
-                    if (!hasAssignedNDiagonal) {
-                        hasAssignedNDiagonal = true;
-                        nDiagonal = matrix[i][j];
-                    }
-                } else if (nDiagonal != matrix[i][j]) {
-                    diagonalOk = false;
-                }
-                if (nDiagonal) {
-                    return nDiagonal;
-                }
-            }
-
+    private boolean checkDiagonalB(String[][]matrix){
+        boolean same = false;
+        String item = matrix [0][2];
+        if (item.equals(matrix[1][1]) && item.equals(matrix[2][0])) {
+            same = true;
         }
+        return same;
     }
 }
