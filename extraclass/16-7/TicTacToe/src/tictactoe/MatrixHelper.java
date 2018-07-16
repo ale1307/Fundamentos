@@ -66,9 +66,10 @@ public class MatrixHelper {
         }
         return same;
     }
-    private boolean checkDiagonalB(String[][]matrix){
+
+    private boolean checkDiagonalB(String[][] matrix) {
         boolean same = false;
-        String item = matrix [0][2];
+        String item = matrix[0][2];
         if (item.equals(matrix[1][1]) && item.equals(matrix[2][0])) {
             same = true;
         }
