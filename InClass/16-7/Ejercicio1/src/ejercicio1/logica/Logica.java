@@ -26,7 +26,7 @@ public class Logica {
     }
     
     public boolean isValid(String usuario){
-        usuario
+        
         return true;
         
     }
