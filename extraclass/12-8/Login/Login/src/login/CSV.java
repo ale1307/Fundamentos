@@ -24,18 +24,18 @@ public class CSV {
     private boolean LogIn = false;
     private boolean Authenticator = false;
 
-    public void CSVReader(String User, String Password) {
+    public void CSVReader(String user, String password) {
         try {
             Authenticator = true;
             br = new BufferedReader(new FileReader(csvFile));
-            while (((line = br.readLine()) != null) && !LogIn) {
+            while (((line = br.readLine()) != null) && LogIn) {
 
                 String[] people = line.split(csvSplitBy);
 
                 String userTemp = people[0];
                 String passTemp = people[1];
 
-                if ((User.equals(people[0])) && Password.equals(people[1])) {
+                if ((user.equals(people[0])) && password.equals(people[1])) {
                     JOptionPane.showMessageDialog(null, "Usuario Aceptado");
                     LogIn = true;
 
@@ -46,7 +46,8 @@ public class CSV {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "En este momento no podemos atender la solicitud");
         } finally {
-            if (LogIn ||Authenticator) {
+            if (!LogIn && !Authenticator) {
+                JOptionPane.showMessageDialog(null, "Usuario Aceptado");
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario/contraseña estan incorrectos ");
             }
